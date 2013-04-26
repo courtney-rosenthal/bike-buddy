@@ -1,6 +1,6 @@
 BikeBuddy::Application.routes.draw do
-  devise_for :user
   
+  devise_for :user, :path_names => {:sign_up => 'register', :sign_in => 'login', :sign_out => 'logout'}
   match "/user/profile" => "user#profile"
 
   # added for devise
