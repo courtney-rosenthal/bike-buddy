@@ -9,6 +9,33 @@ The system is build with Rails 3.2.
 
 This note describes how to setup the application for development.
 
+A planning and requirements doc is posted here:
+
+https://docs.google.com/document/d/11NmvZT4K095vCcPPZf7hvFki8YC_7uBm9_EmmCf_w1U/edit
+
+Please feel free to add your comments and feedback there.
+
+
+== Status / Issues
+
+The implemented functions are:
+* New user registration
+* Password change
+* Password recovery (untested)
+* Profile update
+* Logout
+
+The functions left to do are:
+* Display map (markers but no details) on home page
+* Display map (markers with details) for logged in user
+* Ability for a registered user to initiate a buddy request to another user
+
+Deficiencies:
+* Location picker for start and finish addresses
+* Design (site is unstyled)
+* Navigation and links
+
+
 == Installation
 
 * Download this package to your local system.
