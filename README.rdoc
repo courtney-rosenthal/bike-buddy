@@ -31,9 +31,14 @@ The functions left to do are:
 * Ability for a registered user to initiate a buddy request to another user
 
 Deficiencies:
-* Location picker for start and finish addresses
+* Need to provide some reasonable defaults for new user profiles.
+* On new profiles, the location picker is defaulting to France.
+* On profile updates, the location picker is zoomed too far out.
+* Not sure new account email confirmation is working. (My workaround
+  is to manually set a date in the "users.confirmed_at" field for the
+  new record.)
 * Design (site is unstyled)
-* Navigation and links
+* Site navigation and links
 
 
 == Installation
