@@ -1,0 +1,68 @@
+<div class="form-item">
+<%= form.label :display_name, "Name" %>
+<%= form.text_field :display_name %>
+<div class="info">This name will be displayed to the public.</div>
+</div>
+
+<div class="form-item">
+<%= form.label :email %>
+<%= form.email_field :email, :autofocus => true %>
+<div class="info">Your email address will be shared with potential buddies.</div>
+<% if devise_mapping.confirmable? && user.pending_reconfirmation? %>
+<div class="info">Currently waiting confirmation for: <%= user.unconfirmed_email %></div>
+<% end %>
+</div>
+
+<div class="form-item">
+<%= form.label :contact_opt_in, "Opt in" %>
+<%= form.check_box :contact_opt_in %>
+<%= form.label :contact_opt_in_true, "Yes, please let me know about upcoming bike commuting initiatives.", :class => "control-label" %>
+<div class="info">(But we won't spam you or share your email address with anybody other than potential buddies.)</div>
+</div>
+
+<div class="form-item">
+<%= form.label :phone %>
+<%= form.telephone_field :phone %>
+<div class="info">Your phone number will be shared with potential buddies.</div>
+</div>
+
+<div class="form-item">
+<%= form.label :is_experienced, "Experience level" %>  
+<%= form.radio_button :is_experienced, true %>
+<%= form.label :is_experienced_true, "I am experienced bike commuter. I offer to help a buddy.", :class => "control-label" %>
+<br />
+<%= form.radio_button :is_experienced, false %>
+<%= form.label :is_experienced_false, "I am a new bike commuter. I seek a buddy to help me.", :class => "control-label" %>
+</div>
+
+<div class="form-item">
+<%= form.label :display_enabled, "Put me on the map" %>
+<%= form.check_box :display_enabled %>
+<%= form.label :display_enabled_true, "Enable this to make your profile available to potential buddies. Uncheck this to make your profile private.", :class => "control-label" %>
+</div>
+
+<div class="form-item">
+<%= form.label :origination_address %>
+<%= form.text_field :origination_address %>
+<div class="info">Specify approximately where would you like to start your commute. This will be displayed to the public, so you may want to show a nearby intersection rather than your home address.</div>
+</div>
+
+<div class="form-item">
+<%= form.label :destination_address %>
+<%= form.text_field :destination_address %>
+<div class="info">Specify approximately where would you like to end your commute. This will be displayed to the public, so you may want to show a nearby intersection rather than your exact address.</div>
+</div>
+
+<div class="form-item">
+<%= form.label :work_schedule %>
+<%= form.text_field :work_schedule %>
+<div class="info">Describe days/dates/times you typically start your commute, as well as how flexible your schedule is.</div>
+</div>
+
+<div class="form-item">
+<%= form.label :user_notes %>
+<%= form.text_field :user_notes %>
+<div class="info">Provide any additional information a potential bike buddy should know.</div>
+</div>
+
+</div>

@@ -1,0 +1,20 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+
+ .form-item {margin: 0.5em 0;}
+ 
+ .form-item label {display: block; font-size: 120%; font-weight: bold;}
+ .form-item label.control-label {display: inline; font-size: 100%; font-weight: normal;}
+ .form-item input {margin-left: 2em; clear: left;}
+ .form-item .info {margin-left: 2em; font-size: 85%; font-style: italic; }

@@ -1,0 +1,21 @@
+<h2>Sign up</h2>
+
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>  
+  
+  <%= render :partial => "user/profile_fields", :locals =>  {:form => f, :user => resource} %>
+  
+  <div class="form-item">
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+  </div>
+  
+  <div class="form-item">
+  <%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation %>
+  </div>
+  
+  <div><%= f.submit "Sign up" %></div>
+<% end %>
+
+<%= render "devise/shared/links" %>

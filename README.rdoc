@@ -1,0 +1,43 @@
+= Bike Buddy
+
+Bike Buddy is a web-based application to help new Austin-area bike commuters
+find a "buddy" who will help them learn to commute by bicycle safely and
+effectively, and for experienced bike commuters to offer their interest to
+be a buddy.
+
+The system is build with Rails 3.2.
+
+This note describes how to setup the application for development.
+
+== Installation
+
+* Download this package to your local system.
+
+* The "device" authentication package requires a server Javascript
+  engine to run. This one dependency is _not_ specified in the "Gemfile"
+  because it could vary, depending on system type.
+  
+  For Linux systems, you can install a Javascript engine by running:
+  
+    # gem install therubyracer
+    
+  For more information on usable JavaScript engines, see:
+  
+    https://github.com/sstephenson/execjs
+    
+* Change into the project directory and run:
+
+    $ bundle install
+    
+* Initialize the database. Run:
+
+    $ rake db:migrate
+    
+* Start the server. Run:
+
+    $ rails server
+    
+* The app should now be running. Visit:
+
+    http://localhost:3000/
+    
