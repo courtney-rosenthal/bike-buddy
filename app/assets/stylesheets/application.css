@@ -18,3 +18,47 @@
  .form-item label.control-label {display: inline; font-size: 100%; font-weight: normal;}
  .form-item input {margin-left: 2em; clear: left;}
  .form-item .info {margin-left: 2em; font-size: 85%; font-style: italic; }
+ 
+ 
+.location-picker-map {
+  border: 1px solid #DDD; 
+  width:300px;
+  height: 300px;
+  margin: 10px 0 10px 0;
+  -webkit-box-shadow: #AAA 0px 0px 15px;
+}
+
+/*
+#legend {
+  font-size: 12px;
+  font-style: italic;
+}
+
+.ui-menu .ui-menu-item a {
+  font-size: 12px;
+}
+
+.input {
+  float:left;  
+}
+
+.input-positioned
+{
+  padding: 35px 0 0 0;
+}
+
+.clearfix:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+ 
+* html .clearfix {
+  height: 1%;
+}
+
+*/
+ 

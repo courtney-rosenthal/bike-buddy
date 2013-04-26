@@ -43,15 +43,55 @@
 
 <div class="form-item">
 <%= form.label :origination_address %>
-<%= form.text_field :origination_address %>
-<div class="info">Specify approximately where would you like to start your commute. This will be displayed to the public, so you may want to show a nearby intersection rather than your home address.</div>
+<div class="location-picker-map" id="origination_map"></div>
+<%= form.text_field :origination_address, :disabled => "disabled" %>
+<%= form.hidden_field :origination_latitude %>
+<%= form.hidden_field :origination_longitude %>
+<div class="info">Move map marker where would you like to start your commute. This will be displayed to the public, so you may want to show a nearby intersection rather than your home address.</div>
 </div>
+
+<script>
+$(function() {
+  var originationPickerWidget = $("#user_origination_address").addresspicker({
+    regionBias: "US",
+    reverseGeocode: true,
+    elements: {
+      map: "#origination_map",
+      lat: "#user_origination_latitude",
+      lng: "#user_origination_longitude",
+    }
+  });
+  var originationMarker = originationPickerWidget.addresspicker("marker");
+  originationMarker.setVisible(true);
+  originationPickerWidget.addresspicker("updatePosition");    
+});
+</script>
 
 <div class="form-item">
 <%= form.label :destination_address %>
-<%= form.text_field :destination_address %>
-<div class="info">Specify approximately where would you like to end your commute. This will be displayed to the public, so you may want to show a nearby intersection rather than your exact address.</div>
+<div class="location-picker-map" id="destination_map"></div>
+<%= form.text_field :destination_address, :disabled => "disabled" %>
+<%= form.hidden_field :destination_latitude %>
+<%= form.hidden_field :destination_longitude %>
+<div class="info">Move map marker where would you like to end your commute. This will be displayed to the public, so you may want to show a nearby intersection rather than your destination address.</div>
 </div>
+
+<script>
+$(function() {
+  var destinationPickerWidget = $("#user_destination_address").addresspicker({
+    regionBias: "US",
+    reverseGeocode: true,
+    elements: {
+      map: "#destination_map",
+      lat: "#user_destination_latitude",
+      lng: "#user_destination_longitude",
+    }
+  });
+  var destinationMarker = destinationPickerWidget.addresspicker("marker");
+  destinationMarker.setVisible(true);
+  destinationPickerWidget.addresspicker("updatePosition");    
+});
+</script>
 
 <div class="form-item">
 <%= form.label :work_schedule %>

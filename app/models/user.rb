@@ -10,5 +10,8 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   # attr_accessible :title, :body
   
-  attr_accessible :display_name, :is_experienced, :display_enabled, :phone, :contact_opt_in, :origination_address, :destination_address, :work_schedule, :user_notes
+  attr_accessible :display_name, :is_experienced, :display_enabled, :phone, :contact_opt_in,
+    :origination_address, :origination_latitude, :origination_longitude,
+    :destination_address, :destination_latitude, :destination_longitude,
+    :work_schedule, :user_notes
 end
