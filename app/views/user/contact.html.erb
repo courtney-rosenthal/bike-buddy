@@ -1,0 +1,33 @@
+<h2>Selected Buddy</h2>
+
+<table class="buddy-info">
+<tr><th>Name:</th> <td><%= h(@buddy.display_name) %></td></tr>
+<tr><th>Buddy type:</th> <td><%= @buddy.is_experienced ? "experienced" : "new" %> commuter</td></tr>
+<tr><th>Origination address:</th> <td><%= h(@buddy.origination_address) %></td></tr>
+<tr><th>Destination address:</th> <td><%= h(@buddy.destination_address) %></td></tr>
+<tr><th>Commute schedule:</th> <td><%= h(@buddy.work_schedule) %></td></tr>
+<% unless @buddy.user_notes.empty? %>
+<tr><th>Notes:</th> <td><%= h(@buddy.user_notes) %></td></tr>
+<% end %>
+</table>
+</div>
+
+<h2>Do you want to contact this buddy?</h2>
+
+<p>If you initiate contact, an email will be sent to both you and the buddy,
+with both yours and theirs profile information.</p>
+
+<%= form_for @buddy, :url => {:action => "contact"} do |f| %>
+
+<div class="form-item">
+<%= label_tag :contact_note, "Optional note:" %>
+<%= text_area_tag :contact_note, nil, :rows => 12, :cols => 72 %>
+<div class="info">Enter here any additional information or comments you may wish to include in the message.</div>
+</div>
+
+<%= f.submit "Send contact" %>
+<%= link_to "Cancel", :back %>
+<% end %>
+
+<%= link_to "Back", :back %> |
+<%= link_to "Home", :root %>

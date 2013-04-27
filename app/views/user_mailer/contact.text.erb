@@ -1,0 +1,17 @@
+Hello,
+
+This message is sent from Bike Buddy, to let you know
+about a potential buddy match.
+
+<%= render :partial => "user_mailer/user_info", :locals =>  {:user => @initiating_user} %>
+
+<%= render :partial => "user_mailer/user_info", :locals =>  {:user => @receiving_user} %>
+<% unless @message.empty? %>
+
+Optional message:
+<%= @message %>
+<% end %>
+
+TODO: next steps instructions
+
+TODO: portal access and profile update instructions
