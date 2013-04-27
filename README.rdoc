@@ -21,15 +21,14 @@ The implemented functions are:
 * Initiate contact to potential buddy
 
 The functions left to do are:
-* Display map (markers but no details) on home page
-* Display map (markers with details) for logged in user
+* Display map on home page.
 
 Deficiencies:
-* Not sure new account email confirmation is working. (My workaround
-  is to manually set a date in the "users.confirmed_at" field for the
-  new record.)
+* Haven't tested email confirmation. (I've been manually enabling the
+  new account by going into the database and setting the
+  "users.confirmed_at" field for the new record.)
+* Haven't tested password recovery.
 * Design (site is unstyled)
-* Site navigation and links
 
 
 == Installation
