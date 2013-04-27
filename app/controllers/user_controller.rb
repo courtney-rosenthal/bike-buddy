@@ -1,6 +1,11 @@
-class UserController < ApplicationController
+class UserController < Devise::RegistrationsController
+  #ApplicationController
   
   before_filter :authenticate_user!
+  
+  def build_resource(hash = nil)
+    super(User::INIT_DEFAULTS)
+  end
   
   def profile
     @user = current_user
