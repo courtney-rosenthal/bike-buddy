@@ -24,11 +24,11 @@ The implemented functions are:
 * Password recovery (untested)
 * Profile update
 * Logout
+* Initiate contact to potential buddy
 
 The functions left to do are:
 * Display map (markers but no details) on home page
 * Display map (markers with details) for logged in user
-* Ability for a registered user to initiate a buddy request to another user
 
 Deficiencies:
 * Not sure new account email confirmation is working. (My workaround
@@ -53,8 +53,9 @@ Deficiencies:
   For more information on usable JavaScript engines, see:
   
     https://github.com/sstephenson/execjs
-    
-* Change into the project directory and run:
+        
+* Ensure required Ruby modules (gems) are present.
+  Change into the project directory and run:
 
     $ bundle install
     
@@ -69,4 +70,3 @@ Deficiencies:
 * The app should now be running. Visit:
 
     http://localhost:3000/
-    

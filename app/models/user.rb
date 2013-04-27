@@ -25,5 +25,10 @@ class User < ActiveRecord::Base
     :destination_latitude => 30.261214068166684,
     :destination_longitude => -97.73637580871582,
   }.freeze
+  
+  def email_header
+    "#{display_name} <#{email}>"
+  end
+  
     
 end

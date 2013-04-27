@@ -1,8 +1,11 @@
 BikeBuddy::Application.routes.draw do
   
-  devise_for :user, :path_names => {:sign_up => 'register', :sign_in => 'login', :sign_out => 'logout'}, :controllers => { :registrations => "user" }
+  devise_for :user,
+    :path_names => {:sign_up => 'register', :sign_in => 'login', :sign_out => 'logout'},
+    :controllers => { :registrations => "user/registration" }
 
-  match "/user/profile" => "user#profile"
+  match "/user/profile" => "user#profile"  
+  match "/user/contact/:id" => "user#contact"
 
   # added for devise
   root :to => "home#index"
