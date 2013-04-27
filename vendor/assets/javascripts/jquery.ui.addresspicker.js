@@ -50,6 +50,17 @@
     map: function() {
       return this.gmap;
     },
+    
+    /***
+     *  begin local addition
+     */
+    movePosition: function(latLng) {
+      this.gmarker.setPosition(latLng);
+      this._markerMoved();      
+    },
+    /*
+     * end local addition
+     ****/
 
     updatePosition: function() {
       this._updatePosition(this.gmarker.getPosition());
