@@ -5,15 +5,9 @@ find a "buddy" who will help them learn to commute by bicycle safely and
 effectively, and for experienced bike commuters to offer their interest to
 be a buddy.
 
-The system is build with Rails 3.2.
+The system is built with Rails 3.2.
 
 This note describes how to setup the application for development.
-
-A planning and requirements doc is posted here:
-
-https://docs.google.com/document/d/11NmvZT4K095vCcPPZf7hvFki8YC_7uBm9_EmmCf_w1U/edit
-
-Please feel free to add your comments and feedback there.
 
 
 == Status / Issues
