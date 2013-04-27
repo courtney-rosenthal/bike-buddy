@@ -15,4 +15,4 @@
 //= require_tree .
 
 //= require jquery-ui-1.8.7.min
-//= require jquery.ui.addresspicker
+//= require jquery-ui-addresspicker

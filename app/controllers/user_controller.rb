@@ -4,6 +4,7 @@ class UserController < ApplicationController
   
   def profile
     @user = current_user
+    require "pp" ; pp params
     if request.put?
       if @user.update_attributes(params[:user])
         flash[:notice] = "Your profile has been updated."

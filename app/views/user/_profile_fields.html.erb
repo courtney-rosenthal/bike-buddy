@@ -44,7 +44,7 @@
 <div class="form-item">
 <%= form.label :origination_address %>
 <div class="location-picker-map" id="origination_map"></div>
-<%= form.text_field :origination_address, :disabled => "disabled" %>
+<%= form.text_field :origination_address, :readonly => true %>
 <%= form.hidden_field :origination_latitude %>
 <%= form.hidden_field :origination_longitude %>
 <div class="info">Click on location where would you like to start your commute. This will be displayed to the public, so you may want to show a nearby intersection rather than your home address.</div>
@@ -53,7 +53,7 @@
 <div class="form-item">
 <%= form.label :destination_address %>
 <div class="location-picker-map" id="destination_map"></div>
-<%= form.text_field :destination_address, :disabled => "disabled" %>
+<%= form.text_field :destination_address, :readonly => true %>
 <%= form.hidden_field :destination_latitude %>
 <%= form.hidden_field :destination_longitude %>
 <div class="info">Click on location where would you like to end your commute. This will be displayed to the public, so you may want to show a nearby intersection rather than your destination address.</div>

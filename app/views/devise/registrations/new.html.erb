@@ -15,7 +15,9 @@
   <%= f.password_field :password_confirmation %>
   </div>
   
-  <div><%= f.submit "Sign up" %></div>
+  <ul class="form-controls">
+    <li class="first"><%= f.submit "Sign up" %></li>
+    <li class="last"><%= link_to "Cancel", :back %></li>
+  </ul>
+  
 <% end %>
-
-<%= render "devise/shared/links" %>
