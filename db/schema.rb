@@ -30,9 +30,9 @@ ActiveRecord::Schema.define(:version => 20130424181500) do
     t.string   "unconfirmed_email"
     t.datetime "created_at",                                            :null => false
     t.datetime "updated_at",                                            :null => false
-    t.string   "display_name",           :limit => 30
+    t.string   "name",           :limit => 30
     t.boolean  "is_experienced"
-    t.boolean  "display_enabled"
+    t.boolean  "is_enabled"
     t.string   "phone",                  :limit => 20
     t.boolean  "contact_opt_in"
     t.string   "origination_address",    :limit => 120
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(:version => 20130424181500) do
     t.string   "destination_address",    :limit => 120
     t.float    "destination_latitude"
     t.float    "destination_longitude"
-    t.string   "work_schedule",          :limit => 120
+    t.string   "schedule",          :limit => 120
     t.string   "user_notes",             :limit => 120
   end
 

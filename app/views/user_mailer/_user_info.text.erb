@@ -1,12 +1,12 @@
-<%= user.display_name %>
-  Buddy type:    <%= user.is_experienced ? "experienced" : "new" %> commuter
+<%= user.name %>
+  Buddy type:    <%= user.commuter_type %> commuter
   Email:         <%= user.email %>
 <% unless user.phone.empty? %>
   Phone:         <%= user.phone %>
 <% end %>
   Origination:   <%= user.origination_address %>
   Destination:   <%= user.destination_address %>
-  Work schedule: <%= user.work_schedule %>
-<% unless user.user_notes.empty? %>
-  Note:          <%= user.user_notes %>
+  Schedule:      <%= user.schedule %>
+<% unless user.user_note.empty? %>
+  Note:          <%= user.user_note %>
 <% end %>

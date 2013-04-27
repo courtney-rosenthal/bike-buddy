@@ -4,12 +4,10 @@ class UserController < ApplicationController
   
   def profile
     @user = current_user
-    require "pp" ; pp params
     if request.put?
       if @user.update_attributes(params[:user])
         flash[:notice] = "Your profile has been updated."
-      else
-        flash[:alert] = "No changes made. Please correct the problem and try again."
+        redirect_to :root
       end
     end
   end
@@ -19,7 +17,7 @@ class UserController < ApplicationController
     @user = current_user
     @buddy = User.find(id)
     if request.put?
-      UserMailer.contact(@user, @buddy, params[:contact_note]).deliver
+      UserMailer.contact(@user, @buddy, params[:message]).deliver
       flash[:notice] = "Buddy contact has been sent ... watch your email box."
       redirect_to :root
     end

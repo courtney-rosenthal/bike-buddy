@@ -1,13 +1,13 @@
 <h2>Selected Buddy</h2>
 
 <table class="buddy-info">
-  <tr><th>Name:</th> <td><%= h(@buddy.display_name) %></td></tr>
-  <tr><th>Buddy type:</th> <td><%= @buddy.is_experienced ? "experienced" : "new" %> commuter</td></tr>
+  <tr><th>Name:</th> <td><%= h(@buddy.name) %></td></tr>
+  <tr><th>Buddy type:</th> <td><%= @buddy.commuter_type %> commuter</td></tr>
   <tr><th>Origination address:</th> <td><%= h(@buddy.origination_address) %></td></tr>
   <tr><th>Destination address:</th> <td><%= h(@buddy.destination_address) %></td></tr>
-  <tr><th>Commute schedule:</th> <td><%= h(@buddy.work_schedule) %></td></tr>
-  <% unless @buddy.user_notes.empty? %>
-  <tr><th>Notes:</th> <td><%= h(@buddy.user_notes) %></td></tr>
+  <tr><th>Commute schedule:</th> <td><%= h(@buddy.schedule) %></td></tr>
+  <% unless @buddy.user_note.empty? %>
+  <tr><th>Notes:</th> <td><%= h(@buddy.user_note) %></td></tr>
   <% end %>
 </table>
 
@@ -19,8 +19,8 @@ with both yours and theirs profile information.</p>
 <%= form_for @buddy, :url => {:action => "contact"} do |f| %>
 
   <div class="form-item">
-    <%= label_tag :contact_note, "Optional note:" %>
-    <%= text_area_tag :contact_note, nil, :rows => 12, :cols => 72 %>
+    <%= label_tag :message, "Optional note:" %>
+    <%= text_area_tag :message, nil, :rows => 12, :cols => 72 %>
     <div class="info">Enter here any additional information or comments you may wish to include in the message.</div>
   </div>
 

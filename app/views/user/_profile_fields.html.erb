@@ -1,7 +1,13 @@
 <div class="form-item">
-<%= form.label :display_name, "Name" %>
-<%= form.text_field :display_name %>
-<div class="info">This name will be displayed to the public.</div>
+<%= form.label :name, "Name" %>
+<%= form.text_field :name %>
+<div class="info">Your first name and initial (like "Joe R.") will be displayed to the public.</div>
+</div>
+
+<div class="form-item">
+<%= form.label :is_enabled, "Put me on the map" %>
+<%= form.check_box :is_enabled %>
+<%= form.label :is_enabled_true, "Enable this to make your profile available to potential buddies. Uncheck this to make your profile private.", :class => "control-label" %>
 </div>
 
 <div class="form-item">
@@ -33,12 +39,6 @@
 <br />
 <%= form.radio_button :is_experienced, false %>
 <%= form.label :is_experienced_false, "I am a new bike commuter. I seek a buddy to help me.", :class => "control-label" %>
-</div>
-
-<div class="form-item">
-<%= form.label :display_enabled, "Put me on the map" %>
-<%= form.check_box :display_enabled %>
-<%= form.label :display_enabled_true, "Enable this to make your profile available to potential buddies. Uncheck this to make your profile private.", :class => "control-label" %>
 </div>
 
 <div class="form-item">
@@ -110,14 +110,14 @@ $(function() {
 
 
 <div class="form-item">
-<%= form.label :work_schedule %>
-<%= form.text_field :work_schedule %>
+<%= form.label :schedule %>
+<%= form.text_field :schedule %>
 <div class="info">Describe days/dates/times you typically start your commute, as well as how flexible your schedule is.</div>
 </div>
 
 <div class="form-item">
-<%= form.label :user_notes %>
-<%= form.text_field :user_notes %>
+<%= form.label :user_note %>
+<%= form.text_field :user_note %>
 <div class="info">Provide any additional information a potential bike buddy should know.</div>
 </div>
 

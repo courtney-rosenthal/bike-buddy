@@ -9,14 +9,14 @@ class User < ActiveRecord::Base
   # TODO validations
   attr_accessible :email, :password, :password_confirmation, :remember_me
   
-  attr_accessible :display_name, :is_experienced, :display_enabled, :phone, :contact_opt_in,
+  attr_accessible :name, :is_enabled, :is_experienced, :phone, :contact_opt_in,
     :origination_address, :origination_latitude, :origination_longitude,
     :destination_address, :destination_latitude, :destination_longitude,
-    :work_schedule, :user_notes
+    :schedule, :user_note
     
   INIT_DEFAULTS = {
     :is_experienced => false,
-    :display_enabled => true,
+    :is_enabled => true,
     :contact_opt_in => false,
     :origination_address => "East Cesar Chavez Street, Austin, TX 78702, USA",
     :origination_latitude => 30.261214068166684,
@@ -27,7 +27,41 @@ class User < ActiveRecord::Base
   }.freeze
   
   def email_header
-    "#{display_name} <#{email}>"
+    "#{name} <#{email}>"
+  end
+  
+  def display_name
+    name.sub(/\s+(.).*/, ' \1.')
+  end
+  
+  def commuter_type
+    is_experienced ? "Experienced" : "New"
+  end
+  
+  def self.cleanup_address(s)
+    s.gsub(/\s+/, ' ').gsub(/[, ]+(tx|texas|usa)\b/i, '')
+  end
+  
+  def self.mapdata
+    self.where(:is_enabled => true).map do |u|
+      {
+        :id => u.id,
+        :name => u.display_name,
+        :commuter_type => u.commuter_type,
+        :origination => {
+          :address => cleanup_address(u.origination_address),
+          :latitude => u.origination_latitude,
+          :longitude => u.origination_longitude,
+        },
+        :destination => {
+          :address => cleanup_address(u.destination_address),
+          :latitude => u.destination_latitude,
+          :longitude => u.destination_longitude,
+        },
+        :schedule => u.schedule,
+        :note => u.user_note,
+      }
+    end
   end
   
     
