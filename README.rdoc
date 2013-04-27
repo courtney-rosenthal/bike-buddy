@@ -31,8 +31,6 @@ The functions left to do are:
 * Ability for a registered user to initiate a buddy request to another user
 
 Deficiencies:
-* Set location picker zoom more appropriately: city level on new profile,
-  neighborhood level on update.
 * Not sure new account email confirmation is working. (My workaround
   is to manually set a date in the "users.confirmed_at" field for the
   new record.)
