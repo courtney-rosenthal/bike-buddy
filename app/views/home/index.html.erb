@@ -1,7 +1,4 @@
-<h1>Bike Buddy</h1>
-
 <div id="map_canvas">map creation failed</div>
-
 <%= javascript_tag do %>
 $(function() {
   var buddyMap = new BuddyMap('#map_canvas', <%= raw @buddyMapOpts.to_json %>);

@@ -8,22 +8,33 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<p class="navbar-text pull-right">
-<% if user_signed_in? %>
-  Hello <strong><%= h(current_user.name) %></strong> |
-  <%= link_to 'Update profile', user_registration_path + "/profile", :class => 'navbar-link' %> |
-  <%= link_to 'Change password', edit_user_registration_path, :class => 'navbar-link' %> |
-  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-<% else %>
-  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-  <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-<% end %>
-
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
-
-<%= yield %>
-
+<div class="page">
+	<div class="main">
+		<p class="notice"><%= notice %></p>
+		<p class="alert"><%= alert %></p>
+		<%= yield %>
+	</div><!-- .main -->
+	<div class="sidebar">
+		<div class="sidebar-block sidebar-block-logo">
+			<%= image_tag "/img/logo.png", :class => "logl" %>
+		</div><!-- .sidebar-block -->
+		<div class="sidebar-block sidebar-block-navigation">
+			<ul class="menu">
+			  <% if user_signed_in? %>
+			  <li>Hello <strong><%= h(current_user.name) %></strong></li>
+			  <li><%= link_to 'Update profile', user_registration_path + "/profile" %></li>
+			  <li><%= link_to 'Change password', edit_user_registration_path %></li>
+			  <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+			  <% else %>
+			  <li><%= link_to "Sign up", new_user_registration_path %></li>
+			  <li><%= link_to "Login", new_user_session_path %></li>
+			  <% end %>
+			</ul>
+		</div><!-- .sidebar-block -->
+		<div class="sidebar-block">
+			<p>Legend, sponsors, links go here.</p>
+		</div><!-- .sidebar-block -->
+	</div><!-- .sidebar -->
+</div><!-- .page -->
 </body>
 </html>
