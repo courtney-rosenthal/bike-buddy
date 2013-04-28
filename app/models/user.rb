@@ -14,16 +14,21 @@ class User < ActiveRecord::Base
     :destination_address, :destination_latitude, :destination_longitude,
     :schedule, :user_note
     
+  # default center location for maps
+  DEFAULT_LATITUDE = 30.261214068166684
+  DEFAULT_LONGITUDE = -97.73637580871582
+  DEFAULT_ADDRESS = "East Cesar Chavez Street, Austin, TX 78702, USA"
+    
   INIT_DEFAULTS = {
     :is_experienced => false,
     :is_enabled => true,
     :contact_opt_in => false,
-    :origination_address => "East Cesar Chavez Street, Austin, TX 78702, USA",
-    :origination_latitude => 30.261214068166684,
-    :origination_longitude => -97.73637580871582,
-    :destination_address => "East Cesar Chavez Street, Austin, TX 78702, USA",
-    :destination_latitude => 30.261214068166684,
-    :destination_longitude => -97.73637580871582,
+    :origination_address => DEFAULT_ADDRESS,
+    :origination_latitude => DEFAULT_LATITUDE,
+    :origination_longitude => DEFAULT_LONGITUDE,
+    :destination_address => DEFAULT_ADDRESS,
+    :destination_latitude => DEFAULT_LATITUDE,
+    :destination_longitude => DEFAULT_LONGITUDE,
   }.freeze
   
   def email_header
@@ -42,27 +47,49 @@ class User < ActiveRecord::Base
     s.gsub(/\s+/, ' ').gsub(/[, ]+(tx|texas|usa)\b/i, '')
   end
   
-  def self.mapdata
-    self.where(:is_enabled => true).map do |u|
-      {
-        :id => u.id,
-        :name => u.display_name,
-        :commuter_type => u.commuter_type,
-        :origination => {
-          :address => cleanup_address(u.origination_address),
-          :latitude => u.origination_latitude,
-          :longitude => u.origination_longitude,
-        },
-        :destination => {
-          :address => cleanup_address(u.destination_address),
-          :latitude => u.destination_latitude,
-          :longitude => u.destination_longitude,
-        },
-        :schedule => u.schedule,
-        :note => u.user_note,
-      }
-    end
+  def origination_formatted
+    self.class.cleanup_address(origination_address)
   end
   
+  def destination_formatted
+    self.class.cleanup_address(destination_address)
+  end
+  
+  def mapdata(current_user = nil)      
+    u = {
+      # data elements to display to everybody ... including unregistered users
+      :name => display_name,
+      :isMe => false,
+      :commuterType => commuter_type,
+      :origination => {
+        :latitude => origination_latitude,
+        :longitude => origination_longitude,
+      },
+      :destination => {
+        :latitude => destination_latitude,
+        :longitude => destination_longitude,
+      },
+    }.merge(current_user ? {
+      # data elements to display only to logged in users
+      :isMe => (current_user && current_user.id == id),
+      :origination => {
+        :latitude => origination_latitude,
+        :longitude => origination_longitude,
+        :address => origination_formatted,
+      },
+      :destination => {
+        :address => destination_formatted,
+        :latitude => destination_latitude,
+        :longitude => destination_longitude,
+      },
+      :schedule => schedule,
+      :note => user_note,
+      :contactURL => Rails.application.routes.url_helpers.user_contact_path(self),
+    } : {})  
+  end
+  
+  def self.mapdata(current_user = nil)
+    self.where(:is_enabled => true).map {|u| u.mapdata(current_user)}
+  end  
     
 end

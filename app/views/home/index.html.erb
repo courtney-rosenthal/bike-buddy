@@ -4,11 +4,9 @@
 
 <%= javascript_tag do %>
 $(function() {
-  var buddyMap = new BuddyMap('#map_canvas', {
-    start_lat: <%= @user ? @user.origination_latitude : "null" %>,
-    start_lng: <%= @user ? @user.origination_longitude : "null" %>,
-    current_user: <%= @user ? @user.id : "null" %>,
-    data: <%= raw @mapdata.to_json %>,
-  });
+  var buddyMap = new BuddyMap('#map_canvas', <%= raw @buddyMapOpts.to_json %>);
+  <% if @user %>
+  buddyMap.addListeners();
+  <% end %>
 });
 <% end %>
