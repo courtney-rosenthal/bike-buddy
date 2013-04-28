@@ -13,6 +13,7 @@
 //= require plugins
 //= require jquery
 //= require jquery_ujs
+//= require twitter/bootstrap
 //= require_tree .
 
 //= require jquery-ui-1.8.7.min

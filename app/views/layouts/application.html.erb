@@ -27,25 +27,42 @@
   <%= javascript_include_tag 'application' %>
 </head>
 <body>
-  <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
-       chromium.org/developers/how-tos/chrome-frame-getting-started -->
-  <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+  <div class="container">
+    <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
+         chromium.org/developers/how-tos/chrome-frame-getting-started -->
+    <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
 
-<p class="navbar-text pull-right">
-<% if user_signed_in? %>
-  Hello <strong><%= h(current_user.name) %></strong> |
-  <%= link_to 'Update profile', user_registration_path + "/profile", :class => 'navbar-link' %> |
-  <%= link_to 'Change password', edit_user_registration_path, :class => 'navbar-link' %> |
-  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-<% else %>
-  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-  <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-<% end %>
+  <div class="navbar">
+    <div class="navbar-inner">
+      <%= link_to "/", :class => "brand" do %>
+        Bike Buddy
+        <% if user_signed_in? %>
+          Hello <strong><%= h(current_user.name) %></strong> |
+        <% end %>
+      <% end %>
+      <ul class="nav">
+        <!-- TODO add active class to active nav -->
+        <% if user_signed_in? %>
+          <li><%= link_to 'Update profile', user_registration_path + "/profile", :class => 'navbar-link' %>
+          <li><%= link_to 'Change password', edit_user_registration_path, :class => 'navbar-link' %>
+          <li><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+        <% else %>
+          <li><%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %>
+          <li><%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
 
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+  <% unless notice.nil? %>
+    <p class="alert alert-info"><%= notice %></p>
+  <% end %>
+  <% unless alert.nil? %>
+    <p class="alert"><%= alert %></p>
+  <% end %>
 
-  <%= yield %>
+    <%= yield %>
+  </div>
 
 </body>
 </html>
