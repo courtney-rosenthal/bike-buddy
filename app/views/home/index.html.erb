@@ -1,9 +1,14 @@
 <h1>Bike Buddy</h1>
 
-<p>map goes here</p>
+<div id="map_canvas">map creation failed</div>
 
-<pre>
-user = <%= h(@user) %>
-
-mapdata = <%= h(@mapdata) %>
-</pre>
+<%= javascript_tag do %>
+$(function() {
+  var buddyMap = new BuddyMap('#map_canvas', {
+    start_lat: <%= @user ? @user.origination_latitude : "null" %>,
+    start_lng: <%= @user ? @user.origination_longitude : "null" %>,
+    current_user: <%= @user ? @user.id : "null" %>,
+    data: <%= raw @mapdata.to_json %>,
+  });
+});
+<% end %>
