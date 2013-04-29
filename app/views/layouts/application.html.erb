@@ -48,28 +48,40 @@
           <li><%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
         <% end %>
       </ul>
-		<% if user_signed_in? %>		
-		<ul class="nav pull-right">
-		  <li>Hello, <%= h(current_user.name) %>.</li>
-		</ul>
-		<% end %>
+	  <% if user_signed_in? %>
+        <p class="nav-text pull-right welcome">Hello, <%= h(current_user.name) %>.</p>
+	  <% end %>
     </div>
-  </div>
-
+  </div><!-- .navbar -->
   
-  <div style="float: right">
-    <%= image_tag "logo.png", :height => 123, :width => 250 %>
-  </div>
+  <div class="row">
   
-  <% unless notice.nil? %>
-    <div class="alert alert-info"><%= notice %></div>
-  <% end %>
-  <% unless alert.nil? %>
-    <div class="alert alert-error"><%= alert %></div>
-  <% end %>
-        
-    <%= yield %>
-  </div>
+    <div class="span9">
+      <% unless notice.nil? %>
+        <div class="alert alert-info"><%= notice %></div>
+      <% end %>
+      <% unless alert.nil? %>
+        <div class="alert alert-error"><%= alert %></div>
+      <% end %>        
+      <%= yield %>
+    </div>
+    
+    <div class="span3">
+      <div class="sidebar-block well">
+      <%= image_tag "logo.png" %>
+      <p>Bike Buddy is a free service,
+      to help new bicyle commuters find an
+      experienced bicycle commuter to help
+      them learn to make bike commuting safe
+      and fun.</p>
+      </div>
+      <div class="sidebar-block well">
+      <a href="http://www.open-austin.org/"><%= image_tag "Open_Austin_Banner_400x80.png" %></a>
+      <p>Created by Open Austin.</p>
+      </div>
+    </div> 
+       
+  </div><!-- .row -->
 
 </body>
 </html>
