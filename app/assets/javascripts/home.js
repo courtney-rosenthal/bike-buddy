@@ -105,7 +105,7 @@ function BuddyMapBuddy(buddyMap, user) {
       position: r.originationLocation,      
       icon: marker.origination.icon,     
       shadow: marker.origination.shadow,
-      title: user.isMe ? "You start here" : user.name + " starts here",
+      title: user.isMe ? "You start here." : user.commuterType + " commuter " + user.name + " starts here.",
     });
     
     r.destinationMarker = new google.maps.Marker({
@@ -113,7 +113,7 @@ function BuddyMapBuddy(buddyMap, user) {
       position: r.destinationLocation,        
       icon: marker.destination.icon,     
       shadow: marker.destination.shadow,   
-      title: user.isMe ? "You finish here" : user.name + " finishes here",
+      title: user.isMe ? "You finish here." : user.commuterType + " commuter " + user.name + " finishes here.",
     });    
         
     r.path = new google.maps.Polyline({
