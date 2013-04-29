@@ -30,19 +30,19 @@ ActiveRecord::Schema.define(:version => 20130424181500) do
     t.string   "unconfirmed_email"
     t.datetime "created_at",                                            :null => false
     t.datetime "updated_at",                                            :null => false
-    t.string   "name",           :limit => 30
-    t.boolean  "is_experienced"
+    t.string   "name",                   :limit => 30
     t.boolean  "is_enabled"
-    t.string   "phone",                  :limit => 20
+    t.boolean  "is_experienced"
     t.boolean  "contact_opt_in"
+    t.string   "phone",                  :limit => 20
     t.string   "origination_address",    :limit => 120
     t.float    "origination_latitude"
     t.float    "origination_longitude"
     t.string   "destination_address",    :limit => 120
     t.float    "destination_latitude"
     t.float    "destination_longitude"
-    t.string   "schedule",          :limit => 120
-    t.string   "user_notes",             :limit => 120
+    t.string   "schedule",               :limit => 120
+    t.string   "user_note",              :limit => 120
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
