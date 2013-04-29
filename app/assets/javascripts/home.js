@@ -7,17 +7,18 @@ function inherit(m) {
   return new o();  
 }
 
-function markerImage(url) {
+function markerImage(img) {
   return {  
-    icon: new google.maps.MarkerImage(url,
+    icon: new google.maps.MarkerImage(
+      "http://maps.google.com/mapfiles/ms/micons/" + img,
       new google.maps.Size(32, 32),  // size
-      new google.maps.Point(0,0),    // origin
+      new google.maps.Point(0, 0),   // origin
       new google.maps.Point(16, 32)  // anchor
     ),    
     shadow: new google.maps.MarkerImage(
       "http://maps.google.com/mapfiles/ms/micons/msmarker.shadow.png",
       new google.maps.Size(59, 32),  // size
-      new google.maps.Point(0,0),    // origin
+      new google.maps.Point(0, 0),   // origin
       new google.maps.Point(16, 32)  // anchor
     ),    
   };  
@@ -52,18 +53,18 @@ function BuddyMap(mapId, opts) {
 BuddyMap.markerDef = {  
 	'Me' : {  
 		lineColor: "#FD7567",
-		origination: markerImage("http://maps.google.com/mapfiles/ms/micons/red-dot.png"),
-		destination: markerImage("http://maps.google.com/mapfiles/ms/micons/red-dot.png"),
+		origination: markerImage("red-dot.png"),
+		destination: markerImage("red-dot.png"),
 	}, 
 	'Experienced' : {  
 		lineColor: "#6991FD",
-		origination: markerImage("http://maps.google.com/mapfiles/ms/micons/blue-dot.png"),
-		destination: markerImage("http://maps.google.com/mapfiles/ms/micons/blue-dot.png"),
+		origination: markerImage("blue-dot.png"),
+		destination: markerImage("blue-dot.png"),
 	}, 
 	'New' : { 
 		lineColor: "#00E64D",
-		origination: markerImage("http://maps.google.com/mapfiles/ms/micons/green-dot.png"),
-		destination: markerImage("http://maps.google.com/mapfiles/ms/micons/green-dot.png"),
+		origination: markerImage("green-dot.png"),
+		destination: markerImage("green-dot.png"),
 	},
 };
 
