@@ -36,9 +36,6 @@
     <div class="navbar-inner">
       <%= link_to "/", :class => "brand" do %>
         Bike Buddy
-        <% if user_signed_in? %>
-          Hello <strong><%= h(current_user.name) %></strong> |
-        <% end %>
       <% end %>
       <ul class="nav">
         <!-- TODO add active class to active nav -->
@@ -51,16 +48,26 @@
           <li><%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
         <% end %>
       </ul>
+		<% if user_signed_in? %>		
+		<ul class="nav pull-right">
+		  <li>Hello, <%= h(current_user.name) %>.</li>
+		</ul>
+		<% end %>
     </div>
   </div>
 
+  
+  <div style="float: right">
+    <%= image_tag "logo.png", :height => 123, :width => 250 %>
+  </div>
+  
   <% unless notice.nil? %>
-    <p class="alert alert-info"><%= notice %></p>
+    <div class="alert alert-info"><%= notice %></div>
   <% end %>
   <% unless alert.nil? %>
-    <p class="alert"><%= alert %></p>
+    <div class="alert alert-error"><%= alert %></div>
   <% end %>
-
+        
     <%= yield %>
   </div>
 
