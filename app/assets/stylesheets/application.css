@@ -20,39 +20,6 @@ body {
 .navbar p {padding-top: 10px; color: #777777;}
 .navbar .welcome {font-style: italic;}
 
- /*
- 
-.page {
-    width: 1000px;
-    margin-left: auto;
-    margin-right: auto;
-}
-.main {
-    width: 660px;
-    margin: 0;
-    padding: 0;
-    float: left;  
-}
-.sidebar {
-    width: 320px;
-    margin-left: 20px;
-    padding: 0;
-    float: left;    
-}
-
-.sidebar-block {
-    margin-bottom: 2em;
-    padding; 10px;
-    border: solid #DDD 1px;
-    border-radius: 10px;
-    -webkit-box-shadow: #AAA 0px 0px 15px;
-}
-
-.logo {
-    width: 300px;
-    height: 148px;
-}
-*/
  
  /****************/
 
@@ -68,9 +35,14 @@ ul.form-controls li { display: inline; border-left: solid #d8d8d8 1px; padding-l
 ul.form-controls li.first { border: none; padding-left: 0; margin-left: 0; }
 
 .location-picker-map {
-  border: 1px solid #DDD; 
   width: 300px;
   height: 300px;
+  border: 1px solid #DDD; 
   margin: 10px 0 10px 0;
   -webkit-box-shadow: #AAA 0px 0px 15px;
+}
+
+.location-picker-map img {
+	/* http://stackoverflow.com/questions/9141249/twitter-bootstrap-css-affecting-google-maps */
+  max-width: none;
 }
