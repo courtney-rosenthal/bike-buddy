@@ -18,18 +18,21 @@ class User < ActiveRecord::Base
   DEFAULT_LATITUDE = 30.261214068166684
   DEFAULT_LONGITUDE = -97.73637580871582
   DEFAULT_ADDRESS = "East Cesar Chavez Street, Austin, TX 78702, USA"
-    
-  INIT_DEFAULTS = {
-    :is_experienced => false,
-    :is_enabled => true,
-    :contact_opt_in => false,
-    :origination_address => DEFAULT_ADDRESS,
-    :origination_latitude => DEFAULT_LATITUDE,
-    :origination_longitude => DEFAULT_LONGITUDE,
-    :destination_address => DEFAULT_ADDRESS,
-    :destination_latitude => DEFAULT_LATITUDE,
-    :destination_longitude => DEFAULT_LONGITUDE,
-  }.freeze
+  
+  after_initialize :set_defaults
+  
+  def set_defaults
+    $stderr.puts "hi!"
+    self.is_experienced = false if self.is_experienced.nil?
+    self.is_enabled = true if self.is_enabled.nil?
+    self.contact_opt_in = false if self.contact_opt_in.nil?
+    self.origination_address ||= DEFAULT_ADDRESS
+    self.origination_latitude ||= DEFAULT_LATITUDE
+    self.origination_longitude ||= DEFAULT_LONGITUDE
+    self.destination_address ||= DEFAULT_ADDRESS
+    self.destination_latitude ||= DEFAULT_LATITUDE
+    self.destination_longitude ||= DEFAULT_LONGITUDE
+  end
   
   def email_header
     "#{name} <#{email}>"
@@ -89,7 +92,7 @@ class User < ActiveRecord::Base
   end
   
   def self.mapdata(current_user = nil)
-    self.where(:is_enabled => true).map {|u| u.mapdata(current_user)}
+    self.where(:is_enabled => true).where("confirmed_at IS NOT NULL").map {|u| u.mapdata(current_user)}
   end  
     
 end
