@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
     $stderr.puts "hi!"
     self.is_experienced = false if self.is_experienced.nil?
     self.is_enabled = true if self.is_enabled.nil?
-    self.contact_opt_in = false if self.contact_opt_in.nil?
+    self.contact_opt_in = true if self.contact_opt_in.nil?
     self.origination_address ||= DEFAULT_ADDRESS
     self.origination_latitude ||= DEFAULT_LATITUDE
     self.origination_longitude ||= DEFAULT_LONGITUDE
