@@ -1,64 +1,79 @@
 <div class="form-item">
-<%= form.label :name, "Name" %>
-<%= form.text_field :name %>
-<div class="info">Your first name and initial (like "Joe R.") will be displayed to the public.</div>
-</div>
-
-<div class="form-item">
-<%= form.label :is_enabled, "Put me on the map" %>
-<%= form.check_box :is_enabled %>
-<%= form.label :is_enabled_true, "Enable this to make your profile available to potential buddies. Uncheck this to make your profile private.", :class => "control-label" %>
+<%= form.label :name, "Your full name (first and last)" %>
+<%= form.text_field :name, :autofocus => true %>
+<div class="info">Your full name will be shared only with potential buddies. Your first name and initial (like "Joe R.") will be displayed to the public.</div>
 </div>
 
 <div class="form-item">
 <%= form.label :email %>
-<%= form.email_field :email, :autofocus => true %>
+<%= form.email_field :email %>
 <div class="info">Your email address will be shared with potential buddies.</div>
 <% if devise_mapping.confirmable? && user.pending_reconfirmation? %>
 <div class="info">Currently waiting confirmation for: <%= user.unconfirmed_email %></div>
 <% end %>
 </div>
 
+<% if mode == :register %>
+
+<div class="form-item">
+<%= form.label :password %>
+<%= form.password_field :password %>
+<div class="info">Your email and this password are your credentials to log on to this site.</div>
+</div>
+
+<div class="form-item">
+<%= form.label :password_confirmation %>
+<%= form.password_field :password_confirmation %>
+</div>
+
+<% end %>
+  
+<div class="form-item">
+<%= form.label :phone %>
+<%= form.telephone_field :phone %>
+<div class="info">Your phone number will be shared only with potential buddies.</div>
+</div>
+
+<div class="form-item">
+<%= form.label :is_enabled, "Find me a buddy" %>
+<%= form.check_box :is_enabled %>
+<%= form.label :is_enabled_true, "Yes, put my commute route on the map and allow potential buddies to contact me.", :class => "control-label" %>
+<div class="info">Turn this off to make your profile private.</div>
+</div>
+
 <div class="form-item">
 <%= form.label :contact_opt_in, "Opt in" %>
 <%= form.check_box :contact_opt_in %>
 <%= form.label :contact_opt_in_true, "Yes, please let me know about upcoming bike commuting initiatives.", :class => "control-label" %>
-<div class="info">(But we won't spam you or share your email address with anybody other than potential buddies.)</div>
-</div>
-
-<div class="form-item">
-<%= form.label :phone %>
-<%= form.telephone_field :phone %>
-<div class="info">Your phone number will be shared with potential buddies.</div>
+<div class="info">We won't spam you or share your email address with anybody other than potential buddies.</div>
 </div>
 
 <div class="form-item">
 <%= form.label :is_experienced, "Experience level" %>  
-<%= form.radio_button :is_experienced, true %>
-<%= form.label :is_experienced_true, "I am experienced bike commuter. I offer to help a buddy.", :class => "control-label" %>
-<br />
 <%= form.radio_button :is_experienced, false %>
 <%= form.label :is_experienced_false, "I am a new bike commuter. I seek a buddy to help me.", :class => "control-label" %>
+<br />
+<%= form.radio_button :is_experienced, true %>
+<%= form.label :is_experienced_true, "I am experienced bike commuter. I want to help a buddy.", :class => "control-label" %>
 </div>
 
 <div class="form-item">
 <%= form.label :origination_address %>
 <div class="location-picker-map" id="origination_map"></div>
-<%= form.text_field :origination_address, :readonly => true %>
+<%= form.text_field :origination_address, :readonly => true, :class => "span5" %>
 <%= form.hidden_field :origination_latitude %>
 <%= form.hidden_field :origination_longitude %>
-<div class="info">Click on location where would you like to start your commute. This will be displayed to the public, so you may want to show a nearby intersection rather than your home address.</div>
+<div class="info">Click on the location where you want to start your commute. This will be displayed to the public, so you may want to show a nearby intersection rather than your home address.</div>
 </div>
 
 <div class="form-item">
 <%= form.label :destination_address %>
 <div class="location-picker-map" id="destination_map"></div>
-<%= form.text_field :destination_address, :readonly => true %>
+<%= form.text_field :destination_address, :readonly => true, :class => "span5" %>
 <%= form.hidden_field :destination_latitude %>
 <%= form.hidden_field :destination_longitude %>
-<div class="info">Click on location where would you like to end your commute. This will be displayed to the public, so you may want to show a nearby intersection rather than your destination address.</div>
+<div class="info">Click on the location where you want to end your commute. This will be displayed to the public, so you may want to show a nearby intersection rather than your destination address.</div>
 </div>
-
 
 <%= javascript_tag do %>
 
@@ -111,13 +126,13 @@ $(function() {
 
 <div class="form-item">
 <%= form.label :schedule %>
-<%= form.text_field :schedule %>
-<div class="info">Describe days/dates/times you typically start your commute, as well as how flexible your schedule is.</div>
+<%= form.text_field :schedule, :class => "span5" %>
+<div class="info">Describe days/dates/times you typically start your commute, as well as how flexible your schedule is.
+This information will help a potential buddy know whether your schedules are compatible.</div>
 </div>
 
 <div class="form-item">
 <%= form.label :user_note %>
-<%= form.text_field :user_note %>
-<div class="info">Provide any additional information a potential bike buddy should know.</div>
+<%= form.text_field :user_note, :class => "span5" %>
+<div class="info">What else should a potential bike buddy should know?</div>
 </div>
-

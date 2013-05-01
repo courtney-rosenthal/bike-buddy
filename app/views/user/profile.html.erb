@@ -2,7 +2,7 @@
 
 <%= form_for @user, :url => user_profile_path do |f| %>
 
-  <%= render :partial => "user/profile_fields", :locals =>  {:form => f, :user => @user} %>
+  <%= render :partial => "user/profile_fields", :locals =>  {:form => f, :user => @user, :mode => :profile} %>
 
   <ul class="form-controls">
     <li class="first"><%= f.submit "Save changes" %></li>

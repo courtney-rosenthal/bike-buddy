@@ -13,16 +13,12 @@
  *= require_tree .
  */
  
-body {
-    padding: 10px;
-}
+body {padding: 10px;}
 
-.navbar p {padding-top: 10px; color: #777777;}
-.navbar .welcome {font-style: italic;}
-
+/*
+ * registration form styles
+ */
  
- /****************/
-
 .form-item {margin: 0.5em 0;}
  
 .form-item label {display: block; font-size: 120%; font-weight: bold;}

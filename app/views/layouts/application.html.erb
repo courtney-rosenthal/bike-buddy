@@ -11,27 +11,30 @@
        More info: h5bp.com/i/378 -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <title>BikeBuddy</title>
-  <meta name="description" content="">
+  <title>Bike Buddy</title>
+  <!-- meta name="description" content="" -->
 
   <!-- Mobile viewport optimized: h5bp.com/viewport -->
-  <meta name="viewport" content="width=device-width">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
 
-  <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= csrf_meta_tags %>
+  
+  <%= stylesheet_link_tag    "application", :media => "all" %>
 
   <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
   <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
   <%= javascript_include_tag 'application' %>
 </head>
 <body>
-  <div class="container">
-    <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
-         chromium.org/developers/how-tos/chrome-frame-getting-started -->
-    <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+  <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
+       chromium.org/developers/how-tos/chrome-frame-getting-started -->
+  <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
 
+    
+  <div class="container">
+  
   <div class="navbar">
     <div class="navbar-inner">
       <%= link_to "/", :class => "brand" do %>
@@ -40,48 +43,50 @@
       <ul class="nav">
         <!-- TODO add active class to active nav -->
         <% if user_signed_in? %>
-          <li><%= link_to 'Update profile', user_registration_path + "/profile", :class => 'navbar-link' %>
+          <li><%= link_to 'Update profile', user_profile_path, :class => 'navbar-link' %>
           <li><%= link_to 'Change password', edit_user_registration_path, :class => 'navbar-link' %>
-          <li><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+          <li><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link' %>
         <% else %>
           <li><%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %>
           <li><%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
         <% end %>
       </ul>
-	  <% if user_signed_in? %>
-        <p class="nav-text pull-right welcome">Hello, <%= h(current_user.name) %>.</p>
-	  <% end %>
-    </div>
+      <ul class="nav pull-right">
+        <% if user_signed_in? %>
+          <li><%= link_to "Hello, #{current_user.name}.", user_profile_path, :class => 'navbar-link' %></li>
+        <% end %>
+      </ul>
+    </div><!-- .navbar-inner -->
   </div><!-- .navbar -->
-  
-  <div class="row">
-  
-    <div class="span9">
-      <% unless notice.nil? %>
-        <div class="alert alert-info"><%= notice %></div>
-      <% end %>
-      <% unless alert.nil? %>
-        <div class="alert alert-error"><%= alert %></div>
-      <% end %>        
-      <%= yield %>
-    </div>
     
-    <div class="span3">
-      <div class="sidebar-block well">
-      <%= image_tag "logo.png" %>
-      <p>Bike Buddy is a free service,
-      to help new bicyle commuters find an
-      experienced bicycle commuter to help
-      them learn to make bike commuting safe
-      and fun.</p>
+    <div class="row">
+    
+      <div class="span9">
+        <% unless notice.nil? %>
+          <div class="alert alert-info"><%= notice %></div>
+        <% end %>
+        <% unless alert.nil? %>
+          <div class="alert alert-error"><%= alert %></div>
+        <% end %>        
+        <%= yield %>
       </div>
-      <div class="sidebar-block well">
-      <a href="http://www.open-austin.org/"><%= image_tag "Open_Austin_Banner_400x80.png" %></a>
-      <p>Created by Open Austin.</p>
-      </div>
-    </div> 
-       
-  </div><!-- .row -->
-
+      
+      <div class="span3">
+        <div class="sidebar-block well">
+          <%= image_tag "logo.png" %>
+          <p>Bike Buddy is a free service,
+          to help new bicyle commuters find an
+          experienced bicycle commuter to help
+          them learn to make bike commuting safe
+          and fun.</p>
+        </div>
+        <div class="sidebar-block well">
+          <a href="http://www.open-austin.org/"><%= image_tag "Open_Austin_Banner_400x80.png" %></a>
+          <p>Created by Open Austin.</p>
+        </div>
+      </div> 
+         
+    </div><!-- .row -->  
+  </div><!-- .container -->
 </body>
 </html>

@@ -5,12 +5,12 @@
 
   <div class="form-item">
   <%= f.label :password, "New password" %>
-  <%= f.password_field :password, :autocomplete => "off" %>
+  <%= f.password_field :password, :size => 20, :autocomplete => "off" %>
   </div>
 
   <div class="form-item">
   <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
+  <%= f.password_field :password_confirmation, :size => 20 %>
   </div>
 
   <div class="form-item">
