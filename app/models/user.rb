@@ -6,13 +6,27 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
-  # TODO validations
-  attr_accessible :email, :password, :password_confirmation, :remember_me
-  
-  attr_accessible :name, :is_enabled, :is_experienced, :phone, :contact_opt_in,
+  attr_accessible :email, :password, :password_confirmation, :remember_me,
+    :name, :is_enabled, :is_experienced, :phone, :contact_opt_in,
     :origination_address, :origination_latitude, :origination_longitude,
     :destination_address, :destination_latitude, :destination_longitude,
-    :schedule, :user_note
+    :schedule, :user_note    
+ 
+  
+  
+  validates :name, :presence => true
+  validates :is_enabled, :inclusion => {:in => [true, false]}
+  validates :is_experienced, :inclusion => {:in => [true, false]}
+  validates :phone, :presence => true
+  validates :contact_opt_in, :inclusion => {:in => [true, false]}
+  validates :origination_address, :presence => true
+  validates :origination_latitude
+  validates :origination_longitude
+  validates :destination_address, :presence => true
+  validates :destination_latitude
+  validates :destination_longitude
+  validates :schedule
+  validates :user_note
     
   # default center location for maps
   DEFAULT_LATITUDE = 30.261214068166684
