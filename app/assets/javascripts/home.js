@@ -129,7 +129,7 @@ function BuddyMapBuddy(buddyMap, user) {
     
     var content = [];    
     content.push("<b>" + user.name.escapeHTML() + "</b>"); 
-    if (!isEmpty(user.commuterType.address)) {
+    if (!isEmpty(user.commuterType)) {
     	content.push(user.commuterType.escapeHTML() + " commuter");  
     }
     if (!isEmpty(user.origination.address)) {
