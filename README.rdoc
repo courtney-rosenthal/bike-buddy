@@ -10,27 +10,6 @@ The system is built with Rails 3.2.
 This note describes how to setup the application for development.
 
 
-== Status / Issues
-
-The implemented functions are:
-* New user registration
-* Password change
-* Password recovery (untested)
-* Profile update
-* Logout
-* Initiate contact to potential buddy
-
-The functions left to do are:
-* Display map on home page.
-
-Deficiencies:
-* Haven't tested email confirmation. (I've been manually enabling the
-  new account by going into the database and setting the
-  "users.confirmed_at" field for the new record.)
-* Haven't tested password recovery.
-* Design (site is unstyled)
-
-
 == Installation
 
 * Download this package to your local system.
@@ -63,3 +42,4 @@ Deficiencies:
 * The app should now be running. Visit:
 
     http://localhost:3000/
+
