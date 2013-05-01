@@ -1,6 +1,7 @@
 <h2>Update your profile</h2>
 
 <%= form_for @user, :url => user_profile_path do |f| %>
+  <%= resource_error_messages!(@user) %>  
 
   <%= render :partial => "user/profile_fields", :locals =>  {:form => f, :user => @user, :mode => :profile} %>
 
