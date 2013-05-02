@@ -14,14 +14,11 @@ This note describes how to setup the application for development.
 
 * Download this package to your local system.
 
-* The "device" authentication package requires a server Javascript
-  engine to run. This one dependency is _not_ specified in the "Gemfile"
-  because it could vary, depending on system type.
-  
-  For Linux systems, you can install a Javascript engine by running:
-  
-    # gem install therubyracer
-    
+* The "devise" authentication package requires a server Javascript
+  engine to run.  Currently the "Gemfile" specifies "therubyracer"
+  (which I use under Linux).  If you use some other Javascript engine
+  you may wish to comment that out.
+
   For more information on usable JavaScript engines, see:
   
     https://github.com/sstephenson/execjs
