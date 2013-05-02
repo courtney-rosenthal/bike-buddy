@@ -4,7 +4,9 @@ BikeBuddy::Application.routes.draw do
 
   match "/user/profile" => "user#profile"  
   match "/user/contact/:id" => "user#contact", :as => :user_contact  
-
+  
+  match "/about" => "home#about"
+  
   # added for devise
   root :to => "home#index"
 

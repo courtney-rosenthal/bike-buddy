@@ -18,4 +18,10 @@ module ApplicationHelper
 }.html_safe
   end
   
+  def more_link(*args)
+    raw("<span class=\"about-link\">" + link_to(raw("more &raquo;"), *args) + "</span>")
+  end
+  
+
+  
 end

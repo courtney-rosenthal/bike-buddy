@@ -37,11 +37,12 @@
   
   <div class="navbar">
     <div class="navbar-inner">
-      <%= link_to "/", :class => "brand" do %>
+      <%= link_to root_path, :class => "brand" do %>
         Bike Buddy
       <% end %>
       <ul class="nav">
         <!-- TODO add active class to active nav -->
+        <li><%= link_to 'About', about_path, :class => 'navbar-link' %>
         <% if user_signed_in? %>
           <li><%= link_to 'Update profile', user_profile_path, :class => 'navbar-link' %>
           <li><%= link_to 'Change password', edit_user_registration_path, :class => 'navbar-link' %>
@@ -71,23 +72,41 @@
         <%= yield %>
       </div>
       
-      <div class="span3">
+      <div class="span3 sidebar">
         <div class="sidebar-block well">
           <%= image_tag "logo_austin_bike_buddy_230x146.png" %>
-          <p>Helping new bicycle commuters buddy up with an
-          experienced bike commuter, to learn how to commute
-          safely, and to make the ride fun.</p>
+          <p>Connecting people who want to try bicycle
+          commuting with experienced bicycle commuters who want to help.
+          <%= more_link about_path %></p>
+        </div>  
+        <div class="sidebar-block well" style="min-height: 130px">
+          <%= image_tag "logo_bike_month_130x130.png", :class => "pull-left", :style => "margin-right: 10px", :size => "130x130", :alt => "National Bike Month", :title => "National Bike Month" %>
+          May is<br />
+          Bike Month<br />
+          in Austin.<br />
+          <%= more_link "http://austintexas.gov/article/may-bike-month-2013-events-happenings" %>
         </div>
+        <% if content_for?(:sidebar_block) %>    
         <div class="sidebar-block well">
-          <a href="http://www.open-austin.org/"><%= image_tag "logo_open_austin_230x46.png" %></a>
-          <p>A free public service by <a href="http://www.open-austin.org/">Open Austin</a>.</p>
+          <%= yield :sidebar_block %>
+        </div>
+        <% end %>
+        <div class="sidebar-block well">
+          <h3>Created by</h3>
+          <div>
+            <%= link_to "http://www.open-austin.org/" do %>
+              <%= image_tag "logo_open_austin_230x46.png", :size => "230x46", :alt => "Open Austin", :title => "Open Austin" %>
+            <% end %>
+          </div>
+          <h3>Supporters</h3>
+          <ul>
+            <li><%= link_to "Office of Council Member Chris Riley", "http://www.austintexas.gov/place-1" %></li>
+            <li><%= link_to "City of Austin Public Works Neighborhood Connectivity Division", "http://austintexas.gov/department/bicycle-program-0" %></li>
+            <li><%= link_to "Austin Cycling Association", "http://www.austincycling.org/" %></li>
+            <li><%= link_to "BikeAustin", "http://bikeaustin.org/" %></li>
+            <li><%= link_to "BikeTexas", "http://www.biketexas.org/" %></li>            
+          </ul>        
         </div>        
-        <div class="sidebar-block well">
-          <p>Key:<br />
-          <img src="http://maps.google.com/mapfiles/ms/micons/green-dot.png" /> new bike commuter<br />
-          <img src="http://maps.google.com/mapfiles/ms/micons/blue-dot.png" /> experienced bike commuter
-          </ul>
-          </p>
       </div> 
          
     </div><!-- .row -->  
