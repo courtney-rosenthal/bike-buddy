@@ -63,7 +63,6 @@ class User < ActiveRecord::Base
   after_initialize :set_defaults
   
   def set_defaults
-    $stderr.puts "hi!"
     self.is_experienced = false if self.is_experienced.nil?
     self.is_enabled = true if self.is_enabled.nil?
     self.contact_opt_in = true if self.contact_opt_in.nil?

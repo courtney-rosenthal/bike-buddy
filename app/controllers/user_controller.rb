@@ -17,7 +17,7 @@ class UserController < ApplicationController
     @user = current_user
     @buddy = User.find(id)
     if request.put?
-      UserMailer.contact(@user, @buddy, params[:message]).deliver
+      Contact.send_contact(@user, @buddy, params[:message])
       flash[:notice] = "Buddy contact has been sent ... watch your email box."
       redirect_to :root
     end

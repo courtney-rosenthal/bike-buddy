@@ -37,7 +37,7 @@
   
   <div class="navbar">
     <div class="navbar-inner">
-      <%= link_to root_path, :class => "brand" do %>
+      <%= link_to root_path, :title => "Home", :class => "brand" do %>
         Bike Buddy
       <% end %>
       <ul class="nav">
@@ -73,25 +73,30 @@
       </div>
       
       <div class="span3 sidebar">
-        <div class="sidebar-block well">
-          <%= image_tag "logo_austin_bike_buddy_230x146.png" %>
+        <div class="sidebar-block well clearfix">
+          <%= link_to root_path, :title => "Home" do %>
+            <%= image_tag "logo_austin_bike_buddy_230x146.png" %>
+          <% end %>
           <p>Connecting people who want to try bicycle
           commuting with experienced bicycle commuters who want to help.
           <%= more_link about_path %></p>
-        </div>  
-        <div class="sidebar-block well" style="min-height: 130px">
+        </div>
+          
+        <div class="sidebar-block well clearfix">
           <%= image_tag "logo_bike_month_130x130.png", :class => "pull-left", :style => "margin-right: 10px", :size => "130x130", :alt => "National Bike Month", :title => "National Bike Month" %>
           May is<br />
           Bike Month<br />
           in Austin.<br />
           <%= more_link "http://austintexas.gov/article/may-bike-month-2013-events-happenings" %>
         </div>
+           
         <% if content_for?(:sidebar_block) %>    
-        <div class="sidebar-block well">
+        <div class="sidebar-block well clearfix">
           <%= yield :sidebar_block %>
         </div>
         <% end %>
-        <div class="sidebar-block well">
+        
+        <div class="sidebar-block well clearfix">
           <h3>Created by</h3>
           <div>
             <%= link_to "http://www.open-austin.org/" do %>
@@ -106,8 +111,8 @@
             <li><%= link_to "BikeAustin", "http://bikeaustin.org/" %></li>
             <li><%= link_to "BikeTexas", "http://www.biketexas.org/" %></li>            
           </ul>        
-        </div>        
-      </div> 
+        </div>            
+      </div> <!-- .sidebar -->
          
     </div><!-- .row -->  
   </div><!-- .container -->

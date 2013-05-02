@@ -1,17 +1,27 @@
-Hello,
+Greetings.
 
-This message is sent from Bike Buddy, to let you know
-about a potential buddy match.
+This message is from Austin Bike Buddy, to let you know about
+a potential buddy match.
 
 <%= render :partial => "user_mailer/user_info", :locals =>  {:user => @initiating_user} %>
 
 <%= render :partial => "user_mailer/user_info", :locals =>  {:user => @receiving_user} %>
 <% unless @message.empty? %>
 
-Optional message:
+Message from <%= @initiating_user.name %>:
 <%= @message %>
 <% end %>
 
-TODO: next steps instructions
+------------------------------------------------------------------------
+This information is being shared with you and your potential buddy.
+It's up to you to decide whether to make contact and take action.
 
-TODO: portal access and profile update instructions
+If you need to make any changes to your personal information,
+log into the Bike Buddy site and adjust your profile.
+<%= user_profile_url %>
+
+If you do not wish any further buddy contacts, uncheck "find
+me a buddy" to make your profile private.
+
+If you have any questions or feedback, contact:
+bike-buddy@open-austin.org.
