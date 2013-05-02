@@ -19,7 +19,7 @@ module ApplicationHelper
   end
   
   def more_link(*args)
-    raw("<span class=\"about-link\">" + link_to(raw("more &raquo;"), *args) + "</span>")
+    raw("<span class=\"more-link\">" + link_to(raw("more &raquo;"), *args) + "</span>")
   end
   
 

@@ -44,8 +44,8 @@ ul.form-controls li.first { border: none; padding-left: 0; margin-left: 0; }
 }
 
 .sidebar h3 {font-size: 120%; line-height: 120%;}
-.about-link {white-space: nowrap;}
-.about-link a {font-style: italic; background: #e5e5e5; padding: 1px 4px; border-radius: 5px;}
+.more-link {white-space: nowrap;}
+.more-link a {font-style: italic; background: #e5e5e5; padding: 1px 4px; border-radius: 5px;}
 
 .supporter-logos {text-align: center;}
 .supporter-logos img {margin: 5px; height: 180px; width: 180px;}
