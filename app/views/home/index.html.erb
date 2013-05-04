@@ -12,4 +12,17 @@ $(function() {
 <h3>Key</h3>
 <p><%= image_tag "http://maps.google.com/mapfiles/ms/micons/green-dot.png", :size => "32x32" %> new bike commuter</p>
 <p><%= image_tag "http://maps.google.com/mapfiles/ms/micons/blue-dot.png", :size => "32x32" %> experienced bike commuter</p>
+<div class="smaller">
+<% if user_signed_in? %>
+Click on a route to view details.
+Click "contact that person" at bottom of
+details to open the contact form.
+<% else %>
+New to <i>Bike Buddy</i>?
+First, you'll need to <%= link_to "create a free account", new_user_registration_path %>.
+Then, <%= link_to "sign in", new_user_session_path %> to explore the map,
+view route details, and contact potential buddies.
+<% end %>
+</div>
+
 <% end %>

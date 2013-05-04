@@ -44,6 +44,8 @@ ul.form-controls li.first { border: none; padding-left: 0; margin-left: 0; }
 }
 
 .sidebar h3 {font-size: 120%; line-height: 120%;}
+.sidebar h4 {font-size: 100%; line-height: 100%;}
+.smaller {font-size: 90%; line-height: 100%;}
 .more-link {white-space: nowrap;}
 .more-link a {font-style: italic; background: #e5e5e5; padding: 1px 4px; border-radius: 5px;}
 
