@@ -62,6 +62,7 @@ BikeBuddy::Application.configure do
   # Added for devise.
   config.action_mailer.delivery_method = :sendmail
   config.action_mailer.default_url_options = {:host => 'bike-buddy.open-austin.org'}
+  Devise.mailer_sender = "bike-buddy@open-austin.org"  
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false

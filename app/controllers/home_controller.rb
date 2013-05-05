@@ -13,8 +13,8 @@ class HomeController < ApplicationController
       }
     else
       {
-        :startLat => User::DEFAULT_LATITUDE,
-        :startLng => User::DEFAULT_LONGITUDE,
+        :startLat => BikeBuddy::Application.config.bike_buddy.geo_center.latitude,
+        :startLng => BikeBuddy::Application.config.bike_buddy.geo_center.longitude,
         :currentUser => nil,
         :data => @mapdata,
       }

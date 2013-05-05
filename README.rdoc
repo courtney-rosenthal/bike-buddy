@@ -7,6 +7,10 @@ be a buddy.
 
 The system is built with Rails 3.2.
 
+The source repository for this project is:
+
+https://github.com/chip-rosenthal/bike-buddy/issues
+
 This note describes how to setup the application for development.
 
 
@@ -39,4 +43,35 @@ This note describes how to setup the application for development.
 * The app should now be running. Visit:
 
     http://localhost:3000/
+
+
+== Customization
+
+To deploy Bike Buddy for another location, update the following:
+
+* config/environments/production.rb -- If you run this somewhere
+  without first adjusting "config.action_mailer.default_url_options"
+  and "Devise.mailer_sender" I will punch you in the neck.
+
+* config/initializers/bike_buddy.rb -- Defines latitude, longitude and
+  range of service area.
+
+* And, of course, the graphics in app/assets/images and the
+  templates in app/views/*.
+
+I hope, other than that, the app should be pretty portable.
+
+
+== Support and Development
+
+Issue tracking is here: https://github.com/chip-rosenthal/bike-buddy/issues
+
+If you feel like contributing to the project, take a look here.
+
+If you have any questions, problems, suggestions, please create a new issue.
+
+Or, you can reach me by email:
+
+Chip Rosenthal
+chip@unicom.com
 
