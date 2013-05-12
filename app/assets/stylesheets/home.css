@@ -1,7 +1,8 @@
 #map_canvas {
   border: 1px solid #DDD; 
   background: #D8D8D8;
-  width: 860px;
+  max-width: 860px;
+  min-width: 220px;
   height: 660px;
   margin: 0;
   padding: 0;
