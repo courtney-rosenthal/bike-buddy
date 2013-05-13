@@ -1,0 +1,93 @@
+<h2>User Statistics</h2>
+
+<%
+  @total = User.count
+  def pct(a)
+    sprintf("%0.1f%%", a.to_f * 100.0 / @total)
+  end
+  def row_user_registrations(title, a, b, c)
+    ret = []
+    ret << "<tr>"
+    ret << "<th>#{h(title)}</th>"
+    ret << "<td>#{a}</td>"
+    ret << "<td>#{pct(a)}</td>"
+    ret << "<td>#{b}</td>"
+    ret << "<td>#{pct(b)}</td>"
+    ret << "<td>#{c}</td>"
+    ret << "<td>#{pct(c)}</td>"
+    ret << "</tr>"
+    raw ret.join("\n")
+  end
+%>
+ 
+<table class="table table-striped table-bordered">
+  <caption>Summary of User Registrations</caption>
+  <colgroup>
+    <col />
+    <col style="width: 5em" />
+    <col style="width: 5em" />
+    <col style="width: 5em" />
+    <col style="width: 5em" />
+    <col style="width: 5em" />
+    <col style="width: 5em" />
+  </colgroup>
+  <tbody>
+    <tr>
+      <th>Registered Users</th>
+      <th colspan="2">All Commuters</th>
+      <th colspan="2">Experienced Commuters</th>
+      <th colspan="2">New Commuters</th>
+    </tr>
+    <%=
+      a = @total
+      b = User.where("is_experienced == 't'").count
+      c = User.where("is_experienced == 'f'").count
+      row_user_registrations("All Profiles", a, b, c)
+    %>
+    <%=
+      a = User.where("is_enabled = 't'").count
+      b = User.where("is_enabled = 't' AND is_experienced == 't'").count
+      c = User.where("is_enabled = 't' AND is_experienced == 'f'").count
+      row_user_registrations("Public Profiles", a, b, c)
+    %>
+    <%=
+      a = User.where("is_enabled = 'f'").count
+      b = User.where("is_enabled = 'f' AND is_experienced == 't'").count
+      c = User.where("is_enabled = 'f' AND is_experienced == 'f'").count
+      row_user_registrations("Protected Profiles", a, b, c)
+    %>
+  </tbody>
+</table>
+  
+<table class="table table-striped table-bordered">
+  <caption>Summary of Contacts Initiated</caption>
+  <colgroup>  
+    <col />
+    <col style="width: 5em" />
+    <col style="width: 5em" />
+  </colgroup>
+  <tbody>
+  <tr>
+    <th>Initiated by</th>
+    <th colspan="2">Amount</th>
+  </tr>
+  <tr>
+    <th>Any</th>
+    <td><%= @total = Contact.count %></td>
+    <td><%= pct(@total) %></td>
+  </tr>
+  <tr>
+    <th>Experienced Commuter</th>
+    <td><%= a = Contact.joins(:initiator).where("users.is_experienced = 't'").count %></td>
+    <td><%= pct(a) %></td>
+  </tr>
+  <tr>
+    <th>New Commuter</th>
+    <td><%= b = Contact.joins(:initiator).where("users.is_experienced = 'f'").count %></td>
+    <td><%= pct(b) %></td>
+  </tr>
+  </tbody>
+</table>
+
+
+  

@@ -4,6 +4,7 @@ BikeBuddy::Application.routes.draw do
 
   match "/user/profile" => "user#profile"  
   match "/user/contact/:id" => "user#contact", :as => :user_contact  
+  match "/user/stats" => "user#stats" 
   
   match "/about" => "home#about"
   
